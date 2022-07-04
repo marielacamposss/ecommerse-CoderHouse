@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import logo from './logo.svg'
-import './App.css'
+import './style/App.css'
+import NavBar from './components/NavBar'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+        <NavBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hola proximamente el ecommerse de Mariela</p>
@@ -18,6 +21,7 @@ function App() {
         <p>
           Edit <code>App.jsx</code> and save to test HMR updates.
         </p>
+        
         <p>
           <a
             className="App-link"

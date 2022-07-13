@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './style/App.css'
-import NavBar from './components/NavBar'
+import { useState } from 'react';
+import NavBarEcommerse from './components/NavBar/NavBar';
+import ItemListContainer from './components/NavBar/itemListContainer/ItemListContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/App.css';
 
 
 function App() {
@@ -9,39 +10,9 @@ function App() {
 
   return (
     <div className="App">
-        <NavBar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hola proximamente el ecommerse de Mariela</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+        <NavBarEcommerse />
+        <ItemListContainer saludo='Hola soy item list container'/>
+
     </div>
   )
 }

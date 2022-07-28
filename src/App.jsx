@@ -6,13 +6,14 @@ import CarroCompras from './components/carroCompras/CarroCompras';
 import ItemDetailContainer from './components/DetalleProducto/ItemDetailContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/App.css';
-
+import  CartContextProvider from './context/CartContext';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <BrowserRouter>
+    <CartContextProvider>
     <div className="App">
         <NavBarEcommerse />
         <Routes>
@@ -23,6 +24,7 @@ function App() {
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
     </div>
+    </CartContextProvider>
     </BrowserRouter>
   )
 }

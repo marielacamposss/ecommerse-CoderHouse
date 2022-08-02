@@ -26,7 +26,8 @@ const ItemDetail= ({producto}) => {
           <p>{`${producto.categoria}`}</p>
 
           <h3>{`$${producto.price}`}</h3>
-           <Contador initial={1} stock={15} onAdd={onAdd}/>
+      
+           <Intercambio />
           </Col>
           </Row>
           </Container>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Contador = ({initial=1, stock=10, onAdd }) => {
+const Contador = ({initial=1, stock=10, onAdd , handleInter}) => {
     const [count, setCount] = useState(1);
 
     const handleSuma = () => {
@@ -14,7 +14,8 @@ const handleResta = () => {
     }
 }
 const handleAddToCart = () => {
-    onAdd(count)
+   if (count < stock ) {
+    onAdd(count)}
 }
 
   return (
@@ -25,7 +26,7 @@ const handleAddToCart = () => {
     <br />
     <button className='btn btn-primary m-2' onClick={handleSuma}>+</button>
     <button className='btn btn-primary m-2' onClick={handleResta}>-</button>
-    <button className='btn btn-secondary m-2' onClick={handleAddToCart}>Agregar carrito</button>
+   <button onClick={handleInter}><button className='btn btn-secondary m-2' onClick={handleAddToCart}>Agregar carrito</button></button> 
     </div>
   )
 }

@@ -15,7 +15,7 @@ const handleResta = () => {
 }
 const handleAddToCart = () => {
    if (count < stock ) {
-    onAdd(count)}
+    onAdd(count)} 
 }
 
   return (
@@ -26,7 +26,7 @@ const handleAddToCart = () => {
     <br />
     <button className='btn btn-primary m-2' onClick={handleSuma}>+</button>
     <button className='btn btn-primary m-2' onClick={handleResta}>-</button>
-   <button onClick={handleInter}><button className='btn btn-secondary m-2' onClick={handleAddToCart}>Agregar carrito</button></button> 
+  <button className='btn btn-secondary m-2' onClick={handleAddToCart}>Agregar carrito</button>
     </div>
   )
 }

@@ -1,18 +1,27 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Intercambio from './Intercambio';
 import Contador from '../itemListContainer/contador/Contador';
 import {useCartContext} from '../../context/CartContext';
+import { useState } from 'react';
+import {Link} from 'react-router-dom'
 
 const ItemDetail= ({producto}) => {
+  const [ isCount, setIsCount ] = useState(true)
    const { agregarCarrito, cartList } = useCartContext()
   
    const onAdd = (cant) => {
         console.log(`la cantidad es ${cant}`)
         agregarCarrito({ ...producto, cantidad: cant})
+     setIsCount(false)
       }
-
+      const BotonCarro=()=>{
+        return (
+          <Link to='/carro'>
+          <button onClick={()=>console.log('holi')}>IR AL CARRO</button> 
+          </Link>
+        )
+      }
       console.log(cartList)
        return (
        <div>
@@ -26,8 +35,8 @@ const ItemDetail= ({producto}) => {
           <p>{`${producto.categoria}`}</p>
 
           <h3>{`$${producto.price}`}</h3>
-      
-           <Intercambio />
+           { isCount ?  <Contador initial={1} stock={15} onAdd={onAdd} /> : <BotonCarro />}
+
           </Col>
           </Row>
           </Container>

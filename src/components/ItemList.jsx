@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Item from './Item';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-const ItemList = ({ productos }) => {
+const ItemList = memo(
+({ productos }) => {
     return (
         <Container>
         <Row>
@@ -18,5 +19,6 @@ const ItemList = ({ productos }) => {
         </Container>
         )
       }
+      )
               
 export default ItemList

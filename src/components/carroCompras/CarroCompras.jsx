@@ -11,7 +11,7 @@ const CarroCompras = () => {
   {cartList.map(item=>(
     <li key={item.id}>
       <img src={item.foto} alt="foto producto" width={50} />
-      {item.name}- {item.cantidad}
+      {item.name}- {item.cantidad} - Precio Unitario: {item.price} 
     </li>
   ))}
 </ul>

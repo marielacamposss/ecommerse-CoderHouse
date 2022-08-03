@@ -5,6 +5,7 @@ import Contador from '../itemListContainer/contador/Contador';
 import {useCartContext} from '../../context/CartContext';
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
+import { TextStock } from './Stock';
 
 const ItemDetail= ({producto}) => {
   const [ isCount, setIsCount ] = useState(true)
@@ -32,6 +33,7 @@ const ItemDetail= ({producto}) => {
          </Col>
          <Col>
           <h1> {`Detalle de producto ${producto.name}`}</h1>
+         < TextStock />
           <p>{`${producto.categoria}`}</p>
 
           <h3>{`$${producto.price}`}</h3>

@@ -2,7 +2,7 @@ import { useState , useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getFetch } from '../helpers/FechProd'
 import ItemList from '../ItemList'
-import Contador from './contador/Contador'
+import Container from "react-bootstrap/esm/Container";
 
 const ItemListContainer = ({ saludo }) => {
 
@@ -36,14 +36,15 @@ const ItemListContainer = ({ saludo }) => {
  }
 
   return (
-    <div>
-            {loading ? 
+    <Container>
+    <row className="w-75 justify-content-center">
+              {loading ? 
             < Loading />
             :
                <ItemList productos={productos}/>
                    }
-              <Contador initial={1} stock={15} onAdd={onAdd}/>
-               </div>
+    </row>
+    </Container>
   )
 }
 

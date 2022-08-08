@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 const ItemList = memo(
 ({ productos }) => {
     return (
-        <Container>
+        <Container className='m-2'>
         <Row>
         
        {

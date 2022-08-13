@@ -56,11 +56,6 @@ const CarroCompras = () => {
     })))
     .catch(err => console.log(err))
     .finally(()=> vaciarCarrito(), 
-    setFormData({
-      email:'', 
-      name:'', 
-      phone:''
-    }),
     setData(false)
     )
 

@@ -3,17 +3,27 @@ import Table from 'react-bootstrap/Table';
 import Container from "react-bootstrap/esm/Container";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useState } from 'react'
 import { addDoc, collection, documentId, getDoc, getDocs, getFirestore, query, where, writeBatch, updateDoc} from "firebase/firestore";
 
 const CarroCompras = () => {
+  const [ id, setId ] = useState('')
+ const [ formData, setFormData ] = useState({
+  email:'', 
+  name:'', 
+  phone:''
+      })
+ const [ data, setData ] = useState(true)
   const { cartList, vaciarCarrito ,precioTotal, eliminarProducto} = useCartContext()
-  
+
   const guardarOrden = async (e) =>{
     e.preventDefault()
-
-    const order = {}
-    order.buyer = {email:'lalal@gmail.com', name:'mari', phone:'622837827'}
+  if(formData.email === '' || formData.phone ==='' || formData.name === '') 
+    { alert("todos los campos son obligatorios") }else{
    
+    const order = {}
+    order.buyer = formData
+    
     order.items = cartList.map(prod => {
       return{
         product: prod.name,
@@ -21,14 +31,15 @@ const CarroCompras = () => {
         price: prod.price
       }
     })
-
+   
     order.total = precioTotal()
+ 
 //guardar orden firestore
     const db = getFirestore()
     const queryOrders = collection(db, 'orders')
     addDoc(queryOrders, order)
-    .then(resp => console.log(resp.id))
-
+    .then(resp => setId(resp.id))
+ 
     //actualizar el stock
     const queryCollectionStock = collection(db, 'productos')
 
@@ -44,14 +55,32 @@ const CarroCompras = () => {
       stock: res.data().stock - cartList.find(productos => productos.id === res.id).cantidad
     })))
     .catch(err => console.log(err))
-    .finally(()=> console.log('listo'))
+    .finally(()=> vaciarCarrito(), 
+    setFormData({
+      email:'', 
+      name:'', 
+      phone:''
+    }),
+    setData(false)
+    )
 
     batch.commit()
   }
+  }
+
+  const handleChange = (e) =>{
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+  
+  console.log(formData)
 
     return (
       <Container>
-      <row className="w-75 justify-content-center">
+         {data ? 
+        <row className="w-75 justify-content-center">  
          <Table striped>
       <thead>
         <tr>
@@ -75,33 +104,44 @@ const CarroCompras = () => {
       </tbody>
     </Table>
 
-<h6> {precioTotal() != 0 && `Precio Total ${precioTotal()}`}</h6>
-<button onClick={vaciarCarrito}>Vaciar Carrito</button>
-      </row>
-      <row>
+      <h6> {precioTotal() != 0 && `Precio Total ${precioTotal()}`}</h6>
+      <button onClick={vaciarCarrito}>Vaciar Carrito</button>
+    
+    
       <Form
        onSubmit={ guardarOrden }
        >
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+         <Form.Control  onChange={handleChange} type="email" name="email" value={formData.email} placeholder="Enter email" />
+
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Label>Telefono</Form.Label>
+        <Form.Control onChange={handleChange} type="phone" name="phone" value={formData.phone} placeholder="Password" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Label>Nombre Completo</Form.Label>
+        <Form.Control onChange={handleChange} type="name" name="name" value={formData.name}  placeholder="Password" />
       </Form.Group>
+
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
       </row>
+      :
+       <row className="w-75 justify-content-center">  
+       <h2>{id.length > 0 && `El id de tu orden es: ${id}`}</h2> 
+       <br />
+       <p>DATOS DE COMPRADOR:</p>
+       <h6>{formData != '' && `Nombre : ${formData.name} `}</h6>
+       <h6>{formData != '' && `Correo : ${formData.email} `}</h6>
+       <h6>{formData != '' && `Telefono : ${formData.phone}`}</h6>
+       </row>
+}
       </Container>
       )
   }

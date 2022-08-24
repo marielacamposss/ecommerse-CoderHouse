@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,800;0,900;1,300&display=swap');
+
 .App {
   text-align: center;
 }
@@ -17,9 +19,8 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: end;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -40,3 +41,142 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.Stock {
+color: darkolivegreen;
+ font-weight: bold;
+}
+
+.NoStock {
+  color: rgb(158, 158, 158);
+   font-weight:normal;
+  }
+
+.CardImg {
+    object-fit: cover;
+    width: 50vw;
+    height: 30vh
+  }
+  .breadcrumbs{
+    height: 100px;
+    text-align:center;
+    line-height:50px;
+}
+
+
+.DetailImg {
+  object-fit: cover;
+  width: 30vw;
+  height: 50vh
+}
+
+.boxDetail{
+  color: rgb(62, 74, 71) !important;
+  text-decoration: none !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.LogoPlantera{
+  width: 100px; 
+}
+.IconCarrito{
+  width: 20px;
+}
+
+.numberCart {
+  color: rgb(62, 74, 71) !important;
+  text-decoration: none !important;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.6rem;
+}
+
+.NavBarStyle {
+  background-color:rgb(144, 148, 116);
+  color: white;
+  text-decoration: none !important;
+
+}
+
+.NavBarStyleText {
+  color: rgb(62, 74, 71) !important;
+  text-decoration: none !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.breadcrumbStyleText a{
+  color: rgb(62, 74, 71) !important;
+  text-decoration: none !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Nolink{
+  text-decoration: none;
+}
+
+.NavBarStyleText:hover{
+  color:rgb(199, 198, 198);
+ }
+
+.ButtonItem {
+  background-color:rgb(62, 74, 71) !important;
+color:white;
+padding: 0.5rem;
+border-radius: 10px !important;
+border: none !important;
+font-family: 'Montserrat', sans-serif;
+}
+
+.ButtonCounter {
+  background-color:rgb(144, 148, 116) !important;
+color:white;
+border: none !important;
+font-family: 'Montserrat', sans-serif;
+}
+
+.FormCart{
+  background-color:rgb(62, 74, 71)  !important;
+  color:white;
+  padding: 15px;
+}
+
+.TableCart{
+  border: none !important;
+  color:rgb(62, 74, 71) !important;
+  padding: 15px;
+}
+
+.DarkText{
+  color:rgb(62, 74, 71) !important;
+}
+
+.ButtonCounterSmall {
+  background-color:rgb(144, 148, 116) !important;
+color:white;
+border: none !important;
+border-radius: 10px !important;
+font-family: 'Montserrat', sans-serif;
+
+}
+
+.ButtonItemTwo {
+  background-color:rgb(144, 148, 116);
+color:white;
+padding: 0.5rem;
+border-radius: 10px;
+border: none;
+font-family: 'Montserrat', sans-serif;
+
+}
+.tipography {
+  font-family: 'Montserrat', sans-serif;
+  font-size: small;
+}
+.ButtonItem:hover{
+  color:rgb(199, 198, 198);
+  background-color:rgb(62, 74, 71);}
+
+  .DescriptionStile {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+    width: 100%;
+  }
